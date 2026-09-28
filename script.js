@@ -161,6 +161,7 @@ if (cartItems) {
   const cart = [];
   const count = document.getElementById('cartCount');
   const total = document.getElementById('cartTotal');
+  if (!count || !total) return;
 
   document.querySelectorAll('.add-to-cart').forEach((button) =>
     button.addEventListener('click', () => {
