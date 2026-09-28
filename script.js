@@ -1,81 +1,77 @@
 // Mobile menu
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
-
-if (menuToggle) {
+if (menuToggle && mainNav) {
   menuToggle.addEventListener('click', () => {
     mainNav.classList.toggle('active');
   });
 }
 
-// Gallery and Lightbox
+// Gallery lightbox
 const galleryItems = document.querySelectorAll('.gallery-item');
 const lightbox = document.getElementById('lightbox');
-const lightboxImage = document.getElementById('lightbox-image');
-const lightboxCaption = document.getElementById('lightbox-caption');
-const lightboxClose = document.getElementById('lightbox-close');
-const lightboxPrev = document.getElementById('lightbox-prev');
-const lightboxNext = document.getElementById('lightbox-next');
-const lightboxOverlay = document.querySelector('.lightbox-overlay');
 
-let currentImageIndex = 0;
-let images = [];
+if (lightbox && galleryItems.length) {
+  const lightboxImage = document.getElementById('lightboxImage');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxOverlay = document.getElementById('lightboxOverlay');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
 
-// Collect all images
-galleryItems.forEach((item, index) => {
-  const img = item.querySelector('img');
-  const title = item.dataset.title || 'Artwork';
-  images.push({
-    src: img.src,
-    title: title
+  let images = [];
+  let currentIndex = 0;
+
+  galleryItems.forEach((item, index) => {
+    const img = item.querySelector('img');
+    const title = item.dataset.title || 'Artwork';
+    images.push({ src: img.getAttribute('src'), title: title });
+
+    item.addEventListener('click', () => {
+      currentIndex = index;
+      openLightbox();
+    });
   });
 
-  // Add click to open lightbox
-  item.addEventListener('click', () => {
-    currentImageIndex = index;
+  function openLightbox() {
+    const item = images[currentIndex];
+    lightboxImage.setAttribute('src', item.src);
+    lightboxImage.setAttribute('alt', item.title);
+    lightboxCaption.textContent = item.title;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
     openLightbox();
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    openLightbox();
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxOverlay.addEventListener('click', closeLightbox);
+  lightboxNext.addEventListener('click', showNext);
+  lightboxPrev.addEventListener('click', showPrev);
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
   });
-});
-
-function openLightbox() {
-  const image = images[currentImageIndex];
-  lightboxImage.src = image.src;
-  lightboxCaption.textContent = image.title;
-  lightbox.classList.add('active');
-  document.body.style.overflow = 'hidden';
 }
-
-function closeLightbox() {
-  lightbox.classList.remove('active');
-  document.body.style.overflow = 'auto';
-}
-
-function nextImage() {
-  currentImageIndex = (currentImageIndex + 1) % images.length;
-  openLightbox();
-}
-
-function prevImage() {
-  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-  openLightbox();
-}
-
-// Lightbox controls
-if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
-if (lightboxNext) lightboxNext.addEventListener('click', nextImage);
-if (lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
-
-// Keyboard controls
-document.addEventListener('keydown', (e) => {
-  if (!lightbox.classList.contains('active')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowRight') nextImage();
-  if (e.key === 'ArrowLeft') prevImage();
-});
 
 // Contact form
-const contactForm = document.getElementById('contact-form');
+const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
