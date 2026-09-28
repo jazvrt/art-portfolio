@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="jazvrt — Detailed artwork collections and descriptions.">
+    <title>Works | jazvrt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-wrap">
+            <a href="index.html" class="logo">jazvrt</a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html#gallery">Gallery</a>
+                <a href="works.html" class="active">Works</a>
+                <a href="poetry.html">Poetry</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="works-hero">
+            <div class="container">
+                <h1>Works</h1>
+                <p>Detailed explorations of individual pieces</p>
+            </div>
+        </section>
+
+        <section class="works-section">
+            <div class="container">
+                <article class="work-detail">
+                    <h2>Untitled I</h2>
+                    <div class="work-meta">
+                        <span>Oil on canvas</span>
+                        <span>24 × 30 in</span>
+                        <span>2023</span>
+                    </div>
+                    <div class="work-gallery">
+                        <figure class="work-image">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1000&q=80" alt="Untitled I full view" class="zoomable">
+                            <figcaption>Full composition</figcaption>
+                        </figure>
+                        <figure class="work-image">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80" alt="Untitled I detail" class="zoomable">
+                            <figcaption>Detail: texture and color layering</figcaption>
+                        </figure>
+                    </div>
+                    <div class="work-description">
+                        <h3>Description</h3>
+                        <p>
+                            This painting began as an exploration of warm tones and their emotional resonance.
+                            The layering of colors creates depth and movement, inviting the viewer to find their own narrative.
+                            The surface is built up over time, with each layer responding to the previous one.
+                        </p>
+                        <p>
+                            The work is available for viewing and discussion. Please inquire for availability and pricing.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="work-detail">
+                    <h2>Night Field</h2>
+                    <div class="work-meta">
+                        <span>Acrylic on canvas</span>
+                        <span>30 × 40 in</span>
+                        <span>2023</span>
+                    </div>
+                    <div class="work-gallery">
+                        <figure class="work-image">
+                            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1000&q=80" alt="Night Field full view" class="zoomable">
+                            <figcaption>Full composition</figcaption>
+                        </figure>
+                        <figure class="work-image">
+                            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80" alt="Night Field detail" class="zoomable">
+                            <figcaption>Detail: surface treatment</figcaption>
+                        </figure>
+                    </div>
+                    <div class="work-description">
+                        <h3>Description</h3>
+                        <p>
+                            Inspired by nocturnal landscapes and the feeling of quiet solitude.
+                            This piece uses darker tones and gestural marks to evoke atmosphere and introspection.
+                            The composition is intentionally asymmetrical, creating tension and visual interest.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="work-detail">
+                    <h2>Soft Drift</h2>
+                    <div class="work-meta">
+                        <span>Mixed media</span>
+                        <span>28 × 36 in</span>
+                        <span>2024</span>
+                    </div>
+                    <div class="work-gallery">
+                        <figure class="work-image">
+                            <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=1000&q=80" alt="Soft Drift full view" class="zoomable">
+                            <figcaption>Full composition</figcaption>
+                        </figure>
+                        <figure class="work-image">
+                            <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=800&q=80" alt="Soft Drift detail" class="zoomable">
+                            <figcaption>Detail: layered materials</figcaption>
+                        </figure>
+                    </div>
+                    <div class="work-description">
+                        <h3>Description</h3>
+                        <p>
+                            A meditation on movement and impermanence. This mixed media work combines paint, graphite, and collage
+                            to create a sense of flow and transition. The title reflects the gentle quality of the composition.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Lightbox for zooming images -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-overlay" id="lightboxOverlay"></div>
+            <div class="lightbox-container">
+                <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+                <img id="lightboxImage" src="" alt="">
+                <p id="lightboxCaption"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 jazvrt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
