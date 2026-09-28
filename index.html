@@ -20,18 +20,7 @@
   <main id="top">
     <section class="hero"><div class="container hero-inner"><p class="eyebrow">paintings poetry passion</p><h1>Jazvrt</h1><p class="hero-copy">Contemporary work shaped by memory, movement, and silence.</p><div class="hero-actions"><a href="#gallery" class="btn btn-light">View works</a><a href="#contact" class="btn btn-dark">Inquire</a></div></div></section>
 
-    <section class="gallery section-space" id="gallery"><div class="container"><div class="section-heading"><p class="eyebrow muted">Selected pieces</p><h2>Full gallery</h2></div><div class="gallery-grid">
-      <figure class="gallery-item large" data-title="Untitled I"><img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=80" alt="Untitled I"><figcaption>Untitled I</figcaption></figure>
-      <figure class="gallery-item" data-title="Night Field"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80" alt="Night Field"><figcaption>Night Field</figcaption></figure>
-      <figure class="gallery-item" data-title="Soft Drift"><img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80" alt="Soft Drift"><figcaption>Soft Drift</figcaption></figure>
-      <figure class="gallery-item" data-title="Quiet Forms"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Quiet Forms"><figcaption>Quiet Forms</figcaption></figure>
-      <figure class="gallery-item" data-title="Resonance"><img src="https://images.unsplash.com/photo-1517772660320-d64a2a03cf9d?auto=format&fit=crop&w=900&q=80" alt="Resonance"><figcaption>Resonance</figcaption></figure>
-      <figure class="gallery-item" data-title="Warm Interior"><img src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&w=900&q=80" alt="Warm Interior"><figcaption>Warm Interior</figcaption></figure>
-      <figure class="gallery-item" data-title="Pale Horizon"><img src="https://images.unsplash.com/photo-1547333590-47313ce65319?auto=format&fit=crop&w=900&q=80" alt="Pale Horizon"><figcaption>Pale Horizon</figcaption></figure>
-      <figure class="gallery-item large" data-title="Second Silence"><img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&w=900&q=80" alt="Second Silence"><figcaption>Second Silence</figcaption></figure>
-      <figure class="gallery-item" data-title="Weathered Line"><img src="https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&w=900&q=80" alt="Weathered Line"><figcaption>Weathered Line</figcaption></figure>
-      <figure class="gallery-item" data-title="Cold Room"><img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&w=900&q=80" alt="Cold Room"><figcaption>Cold Room</figcaption></figure>
-    </div></div></section>
+    <section class="gallery section-space" id="gallery"><div class="container"><div class="section-heading"><p class="eyebrow muted">Selected pieces</p><h2>Full gallery</h2></div><div class="gallery-grid" id="galleryGrid"></div></div></section>
 
     <div class="lightbox" id="lightbox"><div class="lightbox-overlay" id="lightboxOverlay"></div><div class="lightbox-content"><button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button><div class="zoom-viewport" id="zoomViewport"><img id="lightboxImage" src="" alt=""></div><div class="lightbox-info"><p id="lightboxCaption"></p><div class="lightbox-nav"><button id="lightboxPrev">← Prev</button><button id="lightboxNext">Next →</button></div></div></div></div>
 
@@ -40,6 +29,7 @@
     <section class="contact section-space" id="contact"><div class="container contact-wrap"><div class="contact-copy"><p class="eyebrow muted">Contact</p><h2>For commissions, originals, or collaborations.</h2></div><form class="contact-form" id="contactForm"><label><span>Name</span><input type="text" name="name" required></label><label><span>Email</span><input type="email" name="email" required></label><label><span>Message</span><textarea name="message" rows="5" required></textarea></label><button type="submit" class="btn btn-dark">Send</button></form></div></section>
   </main>
   <footer class="site-footer"><div class="container footer-wrap"><span>Jazvrt</span><span>© 2024</span></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
