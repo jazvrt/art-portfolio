@@ -95,6 +95,7 @@ if (lightbox && galleryItems.length) {
 
     viewport.addEventListener('pointerdown', (e) => {
       if (!zoomed || e.button !== 0 || !e.isPrimary) return;
+      e.preventDefault();
       dragging = true;
       viewport.classList.add('dragging');
       startX = e.clientX - offsetX;
@@ -125,6 +126,10 @@ if (lightbox && galleryItems.length) {
 
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        closeBox();
+        return;
+      }
       const target = e.target;
       if (
         target instanceof HTMLElement &&
@@ -132,7 +137,6 @@ if (lightbox && galleryItems.length) {
       ) {
         return;
       }
-      if (e.key === 'Escape') closeBox();
       if (e.key === 'ArrowLeft') show(-1);
       if (e.key === 'ArrowRight') show(1);
     });
