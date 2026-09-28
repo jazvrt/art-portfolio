@@ -1,8 +1,97 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Shop original works by jazvrt."><title>jazvrt — shop</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
-<body><header class="site-header"><div class="container nav-wrap"><a href="index.html" class="brand">jazvrt</a><nav class="main-nav"><a href="index.html#gallery">Gallery</a><a href="index.html#about">About</a><a href="poetry.html">Poetry</a><a href="shop.html">Shop</a><a href="index.html#contact">Contact</a></nav><button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button></div></header>
-<main><section class="shop-page section-space"><div class="container"><div class="section-heading"><p class="eyebrow muted">Available works</p><h2>Shop</h2><p class="shop-note">A visual preview of how originals and editions could be offered online.</p></div><div class="shop-grid">
-<article class="product-card"><img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=80" alt="Untitled I"><div class="product-info"><h3>Untitled I</h3><p>Oil on canvas · 24 × 30 in</p><strong>$1,800</strong><button class="btn btn-dark add-to-cart" data-name="Untitled I" data-price="1800">Add to cart</button></div></article>
-<article class="product-card"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80" alt="Night Field"><div class="product-info"><h3>Night Field</h3><p>Mixed media · 30 × 40 in</p><strong>$2,400</strong><button class="btn btn-dark add-to-cart" data-name="Night Field" data-price="2400">Add to cart</button></div></article>
-<article class="product-card"><img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80" alt="Soft Drift"><div class="product-info"><h3>Soft Drift</h3><p>Limited print · 18 × 24 in</p><strong>$240</strong><button class="btn btn-dark add-to-cart" data-name="Soft Drift print" data-price="240">Add to cart</button></div></article>
-</div><aside class="cart-panel"><div><p class="eyebrow muted">Your selection</p><h3>Cart <span id="cartCount">0</span></h3><div id="cartItems"><p class="cart-empty">Your cart is empty.</p></div><p class="cart-total">Total: <strong id="cartTotal">$0</strong></p></div><div><p class="payment-label">Payment methods shown in this demo</p><div class="payment-methods"><span>Credit / debit card</span><span>PayPal</span><span>Apple Pay</span><span>Google Pay</span><span>Bank transfer</span></div><button class="btn btn-dark checkout-btn" id="checkoutButton">Continue to checkout</button><p class="demo-note">Demo only — connect Stripe, PayPal, or another payment provider before accepting real payments.</p></div></aside></div></section></main><footer class="site-footer"><div class="container footer-wrap"><span>jazvrt</span><span>© 2024</span></div></footer><script src="script.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop original works by Jazvrt.">
+  <title>Jazvrt — shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand">Jazvrt</a>
+      <nav class="main-nav">
+        <a href="index.html#gallery">Gallery</a>
+        <a href="index.html#about">About</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="shop.html">Shop</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <main>
+    <section class="shop-page section-space">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow muted">Available works</p>
+          <h2>Shop</h2>
+          <p class="shop-note">A visual preview of how originals and editions could be offered online.</p>
+        </div>
+        <div class="shop-grid">
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=80" alt="Untitled I">
+            <div class="product-info">
+              <h3>Untitled I</h3>
+              <p>Oil on canvas · 24 × 30 in</p>
+              <strong>$1,800</strong>
+              <button class="btn btn-dark add-to-cart" data-name="Untitled I" data-price="1800">Add to cart</button>
+            </div>
+          </article>
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80" alt="Night Field">
+            <div class="product-info">
+              <h3>Night Field</h3>
+              <p>Mixed media · 30 × 40 in</p>
+              <strong>$2,400</strong>
+              <button class="btn btn-dark add-to-cart" data-name="Night Field" data-price="2400">Add to cart</button>
+            </div>
+          </article>
+          <article class="product-card">
+            <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80" alt="Soft Drift">
+            <div class="product-info">
+              <h3>Soft Drift</h3>
+              <p>Limited print · 18 × 24 in</p>
+              <strong>$240</strong>
+              <button class="btn btn-dark add-to-cart" data-name="Soft Drift print" data-price="240">Add to cart</button>
+            </div>
+          </article>
+        </div>
+        <aside class="cart-panel">
+          <div>
+            <p class="eyebrow muted">Your selection</p>
+            <h3>Cart <span id="cartCount">0</span></h3>
+            <div id="cartItems"><p class="cart-empty">Your cart is empty.</p></div>
+            <p class="cart-total">Total: <strong id="cartTotal">$0</strong></p>
+          </div>
+          <div>
+            <p class="payment-label">Payment methods shown in this demo</p>
+            <div class="payment-methods">
+              <span>Credit / debit card</span>
+              <span>PayPal</span>
+              <span>Apple Pay</span>
+              <span>Google Pay</span>
+              <span>Bank transfer</span>
+            </div>
+            <button class="btn btn-dark checkout-btn" id="checkoutButton">Continue to checkout</button>
+            <p class="demo-note">Demo only — connect Stripe, PayPal, or another payment provider before accepting real payments.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <span>Jazvrt</span>
+      <span>© 2024</span>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
