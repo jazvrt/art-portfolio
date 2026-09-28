@@ -94,7 +94,7 @@ if (lightbox && galleryItems.length) {
     });
 
     viewport.addEventListener('pointerdown', (e) => {
-      if (!zoomed) return;
+      if (!zoomed || e.button !== 0 || !e.isPrimary) return;
       dragging = true;
       viewport.classList.add('dragging');
       startX = e.clientX - offsetX;
@@ -125,6 +125,13 @@ if (lightbox && galleryItems.length) {
 
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('active')) return;
+      const target = e.target;
+      if (
+        target instanceof HTMLElement &&
+        (target.matches('input, textarea, select, button') || target.isContentEditable)
+      ) {
+        return;
+      }
       if (e.key === 'Escape') closeBox();
       if (e.key === 'ArrowLeft') show(-1);
       if (e.key === 'ArrowRight') show(1);
