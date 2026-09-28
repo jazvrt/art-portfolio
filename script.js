@@ -1,7 +1,7 @@
 // Google Sheets config
 const SHEET_ID = '1U9lZTWG_lEH2PAMBdAKZYkdK5doxbwfM-lbcnWruW8A';
-const GALLERY_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
-const POETRY_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=1`;
+const GALLERY_URL = `https://corsproxy.io/?https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
+const POETRY_URL = `https://corsproxy.io/?https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=1`;
 
 // Load gallery from Google Sheet
 if(document.getElementById('galleryGrid')){
@@ -27,7 +27,7 @@ if(document.getElementById('galleryGrid')){
             }
           });
           // Re-initialize gallery lightbox
-          initLightbox();
+          setTimeout(initLightbox, 100);
         }
       });
     })
