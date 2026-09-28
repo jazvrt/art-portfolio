@@ -94,7 +94,7 @@ if (lightboxNext) {
 }
 
 document.addEventListener("keydown", function (event) {
-  if (!lightbox.classList.contains("is-visible")) return;
+  if (!lightbox || !lightbox.classList.contains("is-visible")) return;
 
   if (event.key === "Escape") {
     closeLightbox();
@@ -115,6 +115,7 @@ if (contactForm) {
   contactForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const button = contactForm.querySelector(".btn");
+    if (!button) return;
     const originalText = button.textContent;
 
     button.textContent = "Message sent!";
