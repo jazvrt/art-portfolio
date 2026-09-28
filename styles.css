@@ -1,552 +1,347 @@
-:root {
-    --black: #000000;
-    --white: #ffffff;
-    --gray: #f5f5f5;
-    --dark-gray: #1a1a1a;
-    --light-gray: #e8e8e8;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    background: var(--white);
-    color: var(--black);
-    line-height: 1.7;
-    font-size: 16px;
-}
-
-img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font: inherit;
-    cursor: pointer;
-    border: none;
-}
-
-input, textarea {
-    font: inherit;
-}
-
-.container {
-    width: min(1100px, calc(100% - 40px));
-    margin: 0 auto;
-}
-
-/* Header */
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--white);
-    border-bottom: 1px solid var(--light-gray);
-}
-
-.header-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 70px;
-}
-
-.logo {
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: lowercase;
-}
-
-.main-nav {
-    display: flex;
-    gap: 32px;
-    font-size: 0.95rem;
-}
-
-.main-nav a {
-    position: relative;
-    color: var(--black);
-    transition: opacity 0.2s ease;
-}
-
-.main-nav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 1px;
-    background: var(--black);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.2s ease;
-}
-
-.main-nav a:hover::after,
-.main-nav a.active::after {
-    transform: scaleX(1);
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    width: 40px;
-    height: 40px;
-    gap: 6px;
-    background: transparent;
-}
-
-.menu-toggle span {
-    width: 100%;
-    height: 2px;
-    background: var(--black);
-}
-
-/* Hero */
-.hero {
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--white);
-    border-bottom: 1px solid var(--light-gray);
-}
-
-.hero-content {
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: clamp(3rem, 10vw, 8rem);
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: lowercase;
-    line-height: 1;
-}
-
-.tagline {
-    font-size: 1.2rem;
-    margin-top: 20px;
-    color: #666;
-}
-
-/* Gallery */
-.gallery {
-    padding: 100px 0;
-}
-
-.gallery h2 {
-    font-size: 2rem;
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-}
-
-.gallery-item {
-    cursor: pointer;
-    overflow: hidden;
-    border: 1px solid var(--light-gray);
-    transition: border-color 0.3s ease;
-}
-
-.gallery-item:hover {
-    border-color: var(--black);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.02);
-}
-
-.gallery-item figcaption {
-    padding: 12px 16px;
-    font-size: 0.95rem;
-    background: var(--gray);
-}
-
-/* Lightbox */
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-}
-
-.lightbox.active {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.lightbox-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.85);
-}
-
-.lightbox-container {
-    position: relative;
-    z-index: 1001;
-    max-width: 90vw;
-    max-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    font-size: 2rem;
-    color: var(--white);
-    background: transparent;
-    z-index: 1002;
-    transition: opacity 0.2s ease;
-}
-
-.lightbox-close:hover {
-    opacity: 0.7;
-}
-
-#lightboxImage {
-    max-width: 100%;
-    max-height: 80vh;
-    object-fit: contain;
-}
-
-#lightboxCaption {
-    color: var(--white);
-    margin-top: 16px;
-    font-size: 0.95rem;
-}
-
-.lightbox-nav {
-    display: flex;
-    gap: 16px;
-    margin-top: 20px;
-}
-
-.lightbox-nav button {
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--white);
-    border: 1px solid var(--white);
-    border-radius: 4px;
-    transition: background 0.2s ease;
-}
-
-.lightbox-nav button:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-/* About */
-.about {
-    padding: 100px 0;
-    background: var(--gray);
-    border-top: 1px solid var(--light-gray);
-    border-bottom: 1px solid var(--light-gray);
-}
-
-.about h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-}
-
-.about p {
-    font-size: 1.05rem;
-    max-width: 800px;
-    margin-bottom: 20px;
-}
-
-/* Works */
-.works-hero,
-.poetry-hero {
-    min-height: 300px;
-    display: flex;
-    align-items: center;
-    background: var(--white);
-    border-bottom: 1px solid var(--light-gray);
-}
-
-.works-hero .container,
-.poetry-hero .container {
-    width: 100%;
-}
-
-.works-hero h1,
-.poetry-hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-.works-hero p,
-.poetry-hero p {
-    font-size: 1.1rem;
-    color: #666;
-}
-
-.works-section,
-.poetry-section {
-    padding: 100px 0;
-}
-
-.work-detail {
-    margin-bottom: 80px;
-    padding-bottom: 80px;
-    border-bottom: 1px solid var(--light-gray);
-}
-
-.work-detail:last-child {
-    border-bottom: none;
-}
-
-.work-detail h2 {
-    font-size: 2.2rem;
-    margin-bottom: 16px;
-}
-
-.work-meta {
-    display: flex;
-    gap: 20px;
-    font-size: 0.95rem;
-    color: #666;
-    margin-bottom: 40px;
-}
-
-.work-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.work-image {
-    margin: 0;
-}
-
-.work-image img {
-    width: 100%;
-    height: auto;
-    cursor: pointer;
-    border: 1px solid var(--light-gray);
-    transition: border-color 0.3s ease;
-}
-
-.work-image img:hover {
-    border-color: var(--black);
-}
-
-.work-image figcaption {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 10px;
-    font-style: italic;
-}
-
-.work-description {
-    max-width: 800px;
-}
-
-.work-description h3 {
-    font-size: 1.3rem;
-    margin-bottom: 16px;
-}
-
-.work-description p {
-    margin-bottom: 16px;
-    font-size: 1rem;
-    color: #333;
-}
-
-/* Poetry */
-.poem {
-    margin-bottom: 80px;
-    padding: 40px;
-    background: var(--gray);
-    border: 1px solid var(--light-gray);
-}
-
-.poem h2 {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-}
-
-.poem-content {
-    font-size: 1.1rem;
-    line-height: 1.9;
-    color: #333;
-    font-style: italic;
-}
-
-/* Contact */
-.contact {
-    padding: 100px 0;
-    background: var(--gray);
-    border-top: 1px solid var(--light-gray);
-}
-
-.contact h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.contact > .container > p {
-    margin-bottom: 40px;
-    color: #666;
-}
-
-.contact-form {
-    max-width: 600px;
-    display: grid;
-    gap: 16px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid var(--light-gray);
-    background: var(--white);
-    color: var(--black);
-    border-radius: 4px;
-}
-
-.contact-form textarea {
-    resize: vertical;
-    min-height: 150px;
-}
-
-.btn-submit {
-    width: fit-content;
-    padding: 12px 32px;
-    background: var(--black);
-    color: var(--white);
-    border-radius: 4px;
-    transition: background 0.3s ease;
-    margin-top: 10px;
-}
-
-.btn-submit:hover {
-    background: #333;
-}
-
-/* Footer */
-.site-footer {
-    padding: 40px 0;
-    border-top: 1px solid var(--light-gray);
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-
-    .main-nav {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        gap: 0;
-        background: var(--white);
-        border-bottom: 1px solid var(--light-gray);
-    }
-
-    .main-nav.open {
-        display: flex;
-    }
-
-    .main-nav a {
-        padding: 16px 20px;
-        border-bottom: 1px solid var(--light-gray);
-    }
-
-    .main-nav a::after {
-        display: none;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 16px;
-    }
-
-    .work-gallery {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .work-meta {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .lightbox-close {
-        top: 10px;
-        right: 10px;
-    }
-
-    #lightboxImage {
-        max-height: 70vh;
-    }
-
-    .lightbox-nav {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .lightbox-nav button {
-        width: 100%;
-    }
-
-    .poem {
-        padding: 20px;
-    }
-
-    .poetry-hero h1,
-    .works-hero h1,
-    .gallery h2,
-    .about h2,
-    .contact h2 {
-        font-size: 1.8rem;
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="jazvrt — contemporary paintings, works, and poetry."
+    />
+    <title>jazvrt</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand">jazvrt</a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#gallery">Gallery</a>
+          <a href="works.html">Works</a>
+          <a href="poetry.html">Poetry</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <p class="eyebrow">Paintings / poetry / stillness</p>
+          <h1>jazvrt</h1>
+          <p class="hero-copy">
+            Contemporary work shaped by memory, movement, and silence.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-light" href="#gallery">View works</a>
+            <a class="btn btn-dark" href="#contact">Inquire</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery section-space">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow muted">Selected pieces</p>
+            <h2>Recent works</h2>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item large" data-caption="Untitled I" data-image="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1200&q=80">
+              <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80" alt="Untitled I" />
+              <figcaption>Untitled I</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-caption="Night Field" data-image="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=80">
+              <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80" alt="Night Field" />
+              <figcaption>Night Field</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-caption="Soft Drift" data-image="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=1200&q=80">
+              <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=800&q=80" alt="Soft Drift" />
+              <figcaption>Soft Drift</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-caption="Quiet Forms" data-image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Quiet Forms" />
+              <figcaption>Quiet Forms</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-caption="Resonance" data-image="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=1200&q=80">
+              <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=800&q=80" alt="Resonance" />
+              <figcaption>Resonance</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about section-space">
+        <div class="container about-grid">
+          <div class="about-copy">
+            <p class="eyebrow muted">Artist statement</p>
+            <h2>Painting from instinct, rhythm, and memory.</h2>
+            <p>
+              My practice explores the space between emotion and form. I work with gesture,
+              texture, and restrained tones to build compositions that feel atmospheric,
+              intimate, and alive.
+            </p>
+            <p>
+              Through painting, I search for a language that stays close to feeling—one that does not explain too much,
+              but leaves room for stillness, recognition, and reflection.
+            </p>
+          </div>
+
+          <div class="about-visual">
+            <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1000&q=80" alt="Artist studio" />
+          </div>
+        </div>
+      </section>
+
+      <section class="shop section-space" id="shop">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow muted">Shop</p>
+            <h2>Original works</h2>
+          </div>
+
+          <div class="shop-grid">
+            <article class="product-card">
+              <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80" alt="Untitled I" />
+              <div class="product-content">
+                <h3>Untitled I</h3>
+                <p>Oil on canvas · 24 × 30 in</p>
+                <div class="product-meta">
+                  <span>$820</span>
+                  <a href="#contact">Inquire</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80" alt="Night Field" />
+              <div class="product-content">
+                <h3>Night Field</h3>
+                <p>Acrylic on canvas · 30 × 40 in</p>
+                <div class="product-meta">
+                  <span>$1,240</span>
+                  <a href="#contact">Inquire</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=800&q=80" alt="Soft Drift" />
+              <div class="product-content">
+                <h3>Soft Drift</h3>
+                <p>Mixed media · 28 × 36 in</p>
+                <div class="product-meta">
+                  <span>$960</span>
+                  <a href="#contact">Inquire</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact section-space">
+        <div class="container contact-wrap">
+          <div class="contact-copy">
+            <p class="eyebrow muted">Contact</p>
+            <h2>For commissions, originals, or collaborations.</h2>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <label>
+              <span>Your name</span>
+              <input type="text" name="name" placeholder="Name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="Email" />
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="5" placeholder="Tell me about your inquiry"></textarea>
+            </label>
+            <button type="submit" class="btn btn-dark">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <span>jazvrt</span>
+        <span>© 2024</span>
+      </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+      <div class="lightbox-panel">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close image">×</button>
+        <img id="lightboxImage" src="" alt="Selected artwork" />
+        <div class="lightbox-info">
+          <p id="lightboxCaption">Artwork</p>
+          <div class="lightbox-controls">
+            <button id="lightboxPrev" type="button">Previous</button>
+            <button id="lightboxNext" type="button">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
