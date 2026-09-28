@@ -109,10 +109,14 @@ if (lightbox && galleryItems.length) {
       image.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(2.4)`;
     });
 
-    viewport.addEventListener('pointerup', () => {
+    function stopDragging() {
       dragging = false;
       viewport.classList.remove('dragging');
-    });
+    }
+
+    viewport.addEventListener('pointerup', stopDragging);
+    viewport.addEventListener('pointercancel', stopDragging);
+    viewport.addEventListener('lostpointercapture', stopDragging);
 
     close.addEventListener('click', closeBox);
     overlay.addEventListener('click', closeBox);
@@ -169,21 +173,38 @@ if (cartItems) {
   function renderCart() {
     count.textContent = cart.length;
     total.textContent = '$' + cart.reduce((sum, item) => sum + item.price, 0).toLocaleString();
-    cartItems.innerHTML = cart.length
-      ? cart
-          .map(
-            (item, i) =>
-              `<div class="cart-row"><span>${item.name}</span><span>$${item.price.toLocaleString()} <button aria-label="Remove item" data-remove="${i}">×</button></span></div>`
-          )
-          .join('')
-      : '<p class="cart-empty">Your cart is empty.</p>';
+    cartItems.replaceChildren();
 
-    cartItems.querySelectorAll('[data-remove]').forEach((button) =>
-      button.addEventListener('click', () => {
-        cart.splice(Number(button.dataset.remove), 1);
+    if (!cart.length) {
+      const empty = document.createElement('p');
+      empty.className = 'cart-empty';
+      empty.textContent = 'Your cart is empty.';
+      cartItems.appendChild(empty);
+      return;
+    }
+
+    cart.forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'cart-row';
+
+      const name = document.createElement('span');
+      name.textContent = item.name;
+
+      const priceWrap = document.createElement('span');
+      priceWrap.append(`$${item.price.toLocaleString()} `);
+
+      const remove = document.createElement('button');
+      remove.setAttribute('aria-label', 'Remove item');
+      remove.textContent = '×';
+      remove.addEventListener('click', () => {
+        cart.splice(i, 1);
         renderCart();
-      })
-    );
+      });
+
+      priceWrap.appendChild(remove);
+      row.append(name, priceWrap);
+      cartItems.appendChild(row);
+    });
   }
 
   const checkout = document.getElementById('checkoutButton');
