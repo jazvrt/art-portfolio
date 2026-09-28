@@ -1,154 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jazvrt - Artist Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="jazvrt — contemporary art portfolio and studio shop"
+    />
+    <title>jazvrt | Contemporary Art</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="#top" class="brand" aria-label="jazvrt home">jazvrt</a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#gallery">Gallery</a>
+          <a href="#about">About</a>
+          <a href="#shop">Shop</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Artist introduction">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <p class="eyebrow">Contemporary painting / studio practice</p>
+          <h1>jazvrt</h1>
+          <p class="hero-copy">
+            Expressive, atmospheric work shaped by movement, memory, and color.
+          </p>
+          <div class="hero-actions">
+            <a href="#gallery" class="btn btn-primary">View work</a>
+            <a href="#shop" class="btn btn-secondary">Shop originals</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery section-spacing" id="gallery">
         <div class="container">
-            <div class="logo">jazvrt</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#shop">Shop</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+          <div class="section-heading">
+            <p class="small-label">Selected works</p>
+            <h2>Recent paintings</h2>
+          </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>jazvrt</h1>
-            <p class="tagline">Contemporary Art & Paintings</p>
-            <p class="subtitle">Capturing emotion through color and form</p>
-            <a href="#gallery" class="cta-button">View My Work</a>
-        </div>
-    </section>
+          <div class="gallery-grid">
+            <article class="art-card large">
+              <img
+                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1000&q=80"
+                alt="Abstract painting in warm neutral tones"
+              />
+              <div class="art-meta">
+                <span>Untitled I</span>
+                <span>Oil on canvas</span>
+              </div>
+            </article>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
+            <article class="art-card">
+              <img
+                src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80"
+                alt="Abstract painting with layered textures"
+              />
+              <div class="art-meta">
+                <span>Night Field</span>
+                <span>Acrylic</span>
+              </div>
+            </article>
+
+            <article class="art-card">
+              <img
+                src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80"
+                alt="Painterly abstract composition"
+              />
+              <div class="art-meta">
+                <span>Soft Drift</span>
+                <span>Mixed media</span>
+              </div>
+            </article>
+
+            <article class="art-card tall">
+              <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                alt="Textured abstract art in a vertical composition"
+              />
+              <div class="art-meta">
+                <span>Quiet Forms</span>
+                <span>Canvas</span>
+              </div>
+            </article>
+
+            <article class="art-card">
+              <img
+                src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80"
+                alt="Neutral-toned abstract painting"
+              />
+              <div class="art-meta">
+                <span>Afterlight</span>
+                <span>Oil</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about section-spacing" id="about">
+        <div class="container about-grid">
+          <div class="about-copy">
+            <p class="small-label">Artist statement</p>
+            <h2>Painting from instinct, rhythm, and memory.</h2>
+            <p>
+              I create work that sits between abstraction and atmosphere. My paintings
+              explore movement, gesture, and emotional residue—using texture, line,
+              and a restrained palette to let feeling lead the composition.
+            </p>
+            <p>
+              Each piece begins with a feeling or a memory, then evolves through layered
+              marks and shifting tones. The goal is not to explain, but to leave space for
+              the viewer to feel their own response.
+            </p>
+          </div>
+
+          <div class="about-visual">
+            <img
+              src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=900&q=80"
+              alt="Artist workspace with paintings and materials"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="shop section-spacing" id="shop">
         <div class="container">
-            <h2>Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x500?text=Painting+1" alt="Painting 1">
-                    <div class="gallery-overlay">
-                        <h3>Untitled I</h3>
-                        <p>Oil on Canvas</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x500?text=Painting+2" alt="Painting 2">
-                    <div class="gallery-overlay">
-                        <h3>Untitled II</h3>
-                        <p>Acrylic on Canvas</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x500?text=Painting+3" alt="Painting 3">
-                    <div class="gallery-overlay">
-                        <h3>Untitled III</h3>
-                        <p>Mixed Media</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x500?text=Painting+4" alt="Painting 4">
-                    <div class="gallery-overlay">
-                        <h3>Untitled IV</h3>
-                        <p>Oil on Canvas</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+          <div class="section-heading">
+            <p class="small-label">Shop</p>
+            <h2>Original works & selected pieces</h2>
+          </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I'm a contemporary artist exploring the intersection of color, form, and emotion. 
-                        My work draws inspiration from personal experiences and the world around me, 
-                        translating abstract concepts into visual narratives.
-                    </p>
-                    <p>
-                        Each piece is a journey of experimentation and discovery, created with intention 
-                        and passion. I believe art should evoke feeling and spark conversation.
-                    </p>
+          <div class="shop-grid">
+            <article class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80"
+                alt="Painting titled Untitled I"
+              />
+              <div class="product-body">
+                <h3>Untitled I</h3>
+                <p>Oil on canvas · 24 × 30 in</p>
+                <div class="product-footer">
+                  <span>$820</span>
+                  <a href="#contact" class="shop-link">Inquire</a>
                 </div>
-            </div>
-        </div>
-    </section>
+              </div>
+            </article>
 
-    <!-- Shop Section -->
-    <section id="shop" class="shop">
-        <div class="container">
-            <h2>Shop</h2>
-            <p class="shop-intro">Original paintings and limited editions available</p>
-            <div class="shop-grid">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/350x450?text=Artwork+1" alt="Artwork 1">
-                    <h3>Original Painting - Untitled I</h3>
-                    <p class="price">$800</p>
-                    <p class="details">Oil on Canvas | 24x30 in</p>
-                    <button class="add-to-cart">Inquire</button>
+            <article class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=800&q=80"
+                alt="Painting titled Night Field"
+              />
+              <div class="product-body">
+                <h3>Night Field</h3>
+                <p>Mixed media · 30 × 40 in</p>
+                <div class="product-footer">
+                  <span>$1,240</span>
+                  <a href="#contact" class="shop-link">Inquire</a>
                 </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/350x450?text=Artwork+2" alt="Artwork 2">
-                    <h3>Original Painting - Untitled II</h3>
-                    <p class="price">$1,200</p>
-                    <p class="details">Acrylic on Canvas | 30x40 in</p>
-                    <button class="add-to-cart">Inquire</button>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/350x450?text=Artwork+3" alt="Artwork 3">
-                    <h3>Original Painting - Untitled III</h3>
-                    <p class="price">$950</p>
-                    <p class="details">Mixed Media | 28x36 in</p>
-                    <button class="add-to-cart">Inquire</button>
-                </div>
-            </div>
-        </div>
-    </section>
+              </div>
+            </article>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p>Interested in purchasing or commissioning a piece?</p>
-            <form class="contact-form" id="contactForm">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="6" required></textarea>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-            <div class="social-links">
-                <p>Follow me on:</p>
-                <a href="#" target="_blank">Instagram</a>
-                <a href="#" target="_blank">Twitter</a>
-                <a href="#" target="_blank">LinkedIn</a>
-            </div>
+            <article class="product-card">
+              <img
+                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=800&q=80"
+                alt="Painting titled Quiet Forms"
+              />
+              <div class="product-body">
+                <h3>Quiet Forms</h3>
+                <p>Oil on canvas · 18 × 24 in</p>
+                <div class="product-footer">
+                  <span>$690</span>
+                  <a href="#contact" class="shop-link">Inquire</a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 jazvrt. All rights reserved.</p>
+      <section class="contact section-spacing" id="contact">
+        <div class="container contact-wrap">
+          <div class="contact-copy">
+            <p class="small-label">Contact</p>
+            <h2>Commission a piece or request availability.</h2>
+            <p>
+              For inquiries about originals, commissions, or collaborations, send a message.
+            </p>
+          </div>
+
+          <form class="contact-form" action="#" method="post">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Your name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="Your email" />
+            </label>
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="5" placeholder="Tell me about your inquiry"></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">Send message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <span>jazvrt</span>
+        <span>© 2024</span>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
