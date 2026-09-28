@@ -1,3 +1,22 @@
+// Back to top button
+const backToTop = document.createElement('button');
+backToTop.className = 'back-to-top';
+backToTop.innerHTML = '↑';
+backToTop.setAttribute('aria-label', 'Back to top');
+document.body.appendChild(backToTop);
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add('show');
+  } else {
+    backToTop.classList.remove('show');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 // Mobile menu
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
@@ -7,7 +26,7 @@ if (menuToggle && mainNav) {
   });
 }
 
-// Gallery lightbox
+// Gallery lightbox with zoom
 const galleryItems = document.querySelectorAll('.gallery-item');
 const lightbox = document.getElementById('lightbox');
 
@@ -21,6 +40,9 @@ if (lightbox && galleryItems.length) {
 
   let images = [];
   let currentIndex = 0;
+  let isZoomed = false;
+  let zoomX = 0;
+  let zoomY = 0;
 
   galleryItems.forEach((item, index) => {
     const img = item.querySelector('img');
@@ -40,11 +62,15 @@ if (lightbox && galleryItems.length) {
     lightboxCaption.textContent = item.title;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
+    isZoomed = false;
+    lightboxImage.classList.remove('zoomed');
   }
 
   function closeLightbox() {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
+    isZoomed = false;
+    lightboxImage.classList.remove('zoomed');
   }
 
   function showNext() {
@@ -56,6 +82,23 @@ if (lightbox && galleryItems.length) {
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     openLightbox();
   }
+
+  // Zoom on click
+  lightboxImage.addEventListener('click', (e) => {
+    if (!isZoomed) {
+      // Zoom in
+      const rect = lightboxImage.getBoundingClientRect();
+      zoomX = ((e.clientX - rect.left) / rect.width) * 100;
+      zoomY = ((e.clientY - rect.top) / rect.height) * 100;
+      lightboxImage.style.transformOrigin = zoomX + '% ' + zoomY + '%';
+      lightboxImage.classList.add('zoomed');
+      isZoomed = true;
+    } else {
+      // Zoom out
+      lightboxImage.classList.remove('zoomed');
+      isZoomed = false;
+    }
+  });
 
   lightboxClose.addEventListener('click', closeLightbox);
   lightboxOverlay.addEventListener('click', closeLightbox);

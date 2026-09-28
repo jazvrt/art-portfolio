@@ -22,6 +22,7 @@ body {
   line-height: 1.65;
   font-size: 16px;
   letter-spacing: -0.005em;
+  font-weight: 400;
 }
 
 img { display: block; width: 100%; }
@@ -36,7 +37,7 @@ input, textarea { font: inherit; }
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 16px;
   color: var(--muted);
 }
@@ -60,11 +61,11 @@ input, textarea { font: inherit; }
 
 .brand {
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.05em;
 }
 
-.main-nav { display: flex; gap: 36px; font-size: 0.95rem; }
+.main-nav { display: flex; gap: 36px; font-size: 0.95rem; font-weight: 400; }
 .main-nav a { position: relative; }
 .main-nav a::after {
   content: '';
@@ -100,7 +101,7 @@ input, textarea { font: inherit; }
 }
 .hero h1 {
   font-size: clamp(3.6rem, 8vw, 7.5rem);
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: -0.02em;
   margin-bottom: 20px;
   line-height: 0.95;
@@ -110,6 +111,7 @@ input, textarea { font: inherit; }
   max-width: 540px;
   margin-bottom: 36px;
   opacity: 0.85;
+  font-weight: 400;
 }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
@@ -121,7 +123,7 @@ input, textarea { font: inherit; }
   border-radius: 6px;
   border: 1px solid transparent;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.02em;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
@@ -132,7 +134,7 @@ input, textarea { font: inherit; }
 .section-heading { margin-bottom: 44px; }
 .section-heading h2, .about-copy h2, .contact-copy h2 {
   font-size: clamp(2rem, 3.6vw, 3.2rem);
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.08;
 }
@@ -205,7 +207,22 @@ input, textarea { font: inherit; }
   z-index: 2;
 }
 .lightbox-close:hover { background: rgba(255,255,255,0.22); }
-#lightboxImage { width: 100%; max-height: 76vh; object-fit: contain; display: block; background:#000; }
+
+#lightboxImage {
+  width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  display: block;
+  background: #000;
+  cursor: zoom-in;
+}
+#lightboxImage.zoomed {
+  cursor: zoom-out;
+  object-fit: cover;
+  max-height: 100vh;
+  width: 100%;
+}
+
 .lightbox-info {
   display: flex;
   align-items: center;
@@ -230,7 +247,7 @@ input, textarea { font: inherit; }
   gap: 44px;
   align-items: center;
 }
-.about-copy p { margin-top: 16px; color: var(--muted); }
+.about-copy p { margin-top: 16px; color: var(--muted); font-weight: 400; }
 .about-visual img {
   border-radius: 10px;
   border: 1px solid var(--line);
@@ -240,7 +257,7 @@ input, textarea { font: inherit; }
 }
 
 .poetry-teaser { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.poetry-lead { color: var(--muted); margin-bottom: 24px; max-width: 480px; }
+.poetry-lead { color: var(--muted); margin-bottom: 24px; max-width: 480px; font-style: italic; font-weight: 400; }
 
 .poetry-page { background: var(--bg); }
 .poem-list { display: flex; flex-direction: column; gap: 0; max-width: 720px; margin: 0 auto; }
@@ -257,18 +274,19 @@ input, textarea { font: inherit; }
   letter-spacing: 0.1em;
   color: var(--muted);
   margin-bottom: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 .poem-text {
   font-family: 'Source Serif Pro', Georgia, serif;
   font-size: 1.35rem;
   line-height: 1.9;
   font-style: italic;
+  font-weight: 400;
 }
 
 .contact { background: var(--bg); }
 .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-.contact-copy p { margin-top: 16px; color: var(--muted); }
+.contact-copy p { margin-top: 16px; color: var(--muted); font-weight: 400; }
 .contact-form {
   display: grid;
   gap: 18px;
@@ -279,12 +297,13 @@ input, textarea { font: inherit; }
   box-shadow: var(--shadow);
 }
 .contact-form label { display: grid; gap: 8px; }
-.contact-form span { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; }
+.contact-form span { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 500; }
 .contact-form input, .contact-form textarea {
   padding: 12px 14px;
   border-radius: 6px;
   border: 1px solid var(--line);
   background: var(--bg);
+  font-weight: 400;
 }
 .contact-form input:focus, .contact-form textarea:focus {
   outline: none;
@@ -292,8 +311,27 @@ input, textarea { font: inherit; }
 }
 .contact-form textarea { min-height: 130px; resize: vertical; }
 
+.back-to-top {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border: 1px solid var(--line);
+  z-index: 20;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.back-to-top.show { display: flex; }
+.back-to-top:hover { transform: translateY(-2px); opacity: 0.9; }
+
 .site-footer { border-top: 1px solid var(--line); background: var(--panel); }
-.footer-wrap { display: flex; justify-content: space-between; align-items: center; min-height: 64px; color: var(--muted); font-size: 0.9rem; }
+.footer-wrap { display: flex; justify-content: space-between; align-items: center; min-height: 64px; color: var(--muted); font-size: 0.9rem; font-weight: 400; }
 
 @media (max-width: 768px) {
   .menu-toggle { display: flex; }
@@ -318,4 +356,5 @@ input, textarea { font: inherit; }
   .gallery-grid { grid-template-columns: 1fr; }
   .gallery-item, .gallery-item.large { grid-column: span 1; }
   .hero-actions { flex-direction: column; }
+  .back-to-top { width: 40px; height: 40px; font-size: 0.9rem; }
 }
