@@ -161,61 +161,61 @@ if (cartItems) {
   const cart = [];
   const count = document.getElementById('cartCount');
   const total = document.getElementById('cartTotal');
-  if (!count || !total) return;
+  if (count && total) {
+    document.querySelectorAll('.add-to-cart').forEach((button) =>
+      button.addEventListener('click', () => {
+        cart.push({ name: button.dataset.name, price: Number(button.dataset.price) });
+        showToast(`${button.dataset.name} added to cart ✓`);
+        renderCart();
+      })
+    );
 
-  document.querySelectorAll('.add-to-cart').forEach((button) =>
-    button.addEventListener('click', () => {
-      cart.push({ name: button.dataset.name, price: Number(button.dataset.price) });
-      showToast(`${button.dataset.name} added to cart ✓`);
-      renderCart();
-    })
-  );
+    function renderCart() {
+      count.textContent = cart.length;
+      total.textContent = '$' + cart.reduce((sum, item) => sum + item.price, 0).toLocaleString();
+      cartItems.replaceChildren();
 
-  function renderCart() {
-    count.textContent = cart.length;
-    total.textContent = '$' + cart.reduce((sum, item) => sum + item.price, 0).toLocaleString();
-    cartItems.replaceChildren();
+      if (!cart.length) {
+        const empty = document.createElement('p');
+        empty.className = 'cart-empty';
+        empty.textContent = 'Your cart is empty.';
+        cartItems.appendChild(empty);
+        return;
+      }
 
-    if (!cart.length) {
-      const empty = document.createElement('p');
-      empty.className = 'cart-empty';
-      empty.textContent = 'Your cart is empty.';
-      cartItems.appendChild(empty);
-      return;
+      cart.forEach((item, i) => {
+        const row = document.createElement('div');
+        row.className = 'cart-row';
+
+        const name = document.createElement('span');
+        name.textContent = item.name;
+
+        const priceWrap = document.createElement('span');
+        priceWrap.append(`$${item.price.toLocaleString()} `);
+
+        const remove = document.createElement('button');
+        remove.setAttribute('aria-label', 'Remove item');
+        remove.textContent = '×';
+        remove.addEventListener('click', () => {
+          cart.splice(i, 1);
+          renderCart();
+        });
+
+        priceWrap.appendChild(remove);
+        row.append(name, priceWrap);
+        cartItems.appendChild(row);
+      });
     }
 
-    cart.forEach((item, i) => {
-      const row = document.createElement('div');
-      row.className = 'cart-row';
-
-      const name = document.createElement('span');
-      name.textContent = item.name;
-
-      const priceWrap = document.createElement('span');
-      priceWrap.append(`$${item.price.toLocaleString()} `);
-
-      const remove = document.createElement('button');
-      remove.setAttribute('aria-label', 'Remove item');
-      remove.textContent = '×';
-      remove.addEventListener('click', () => {
-        cart.splice(i, 1);
-        renderCart();
-      });
-
-      priceWrap.appendChild(remove);
-      row.append(name, priceWrap);
-      cartItems.appendChild(row);
-    });
-  }
-
-  const checkout = document.getElementById('checkoutButton');
-  if (checkout) {
-    checkout.addEventListener('click', () =>
-      alert(
-        cart.length
-          ? 'This is a demo checkout. Connect Stripe, PayPal, or another provider to accept payment.'
-          : 'Add a work to your cart first.'
-      )
-    );
+    const checkout = document.getElementById('checkoutButton');
+    if (checkout) {
+      checkout.addEventListener('click', () =>
+        alert(
+          cart.length
+            ? 'This is a demo checkout. Connect Stripe, PayPal, or another provider to accept payment.'
+            : 'Add a work to your cart first.'
+        )
+      );
+    }
   }
 }
