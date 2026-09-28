@@ -1,187 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="jazvrt — contemporary paintings, works, and poetry."
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="jazvrt — contemporary paintings, works, and poetry.">
     <title>jazvrt</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
     <header class="site-header">
-      <div class="container nav-wrap">
-        <a href="#top" class="brand">jazvrt</a>
-
-        <nav class="main-nav" aria-label="Main navigation">
-          <a href="#gallery">Gallery</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+        <div class="container nav-wrap">
+            <a href="#" class="brand">jazvrt</a>
+            <nav class="main-nav">
+                <a href="#gallery">Gallery</a>
+                <a href="#about">About</a>
+                <a href="#poetry">Poetry</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-inner">
-          <p class="eyebrow">paintings / poetry / stillness</p>
-          <h1>jazvrt</h1>
-          <p class="hero-copy">
-            Contemporary work shaped by memory, movement, and silence.
-          </p>
-          <div class="hero-actions">
-            <a href="#gallery" class="btn btn-light">View works</a>
-            <a href="#contact" class="btn btn-dark">Inquire</a>
-          </div>
+    <main>
+        <section class="hero">
+            <div class="container hero-inner">
+                <p class="eyebrow">paintings / poetry / stillness</p>
+                <h1>jazvrt</h1>
+                <p class="hero-copy">
+                    Contemporary work shaped by memory, movement, and silence.
+                </p>
+                <div class="hero-actions">
+                    <a href="#gallery" class="btn btn-light">View works</a>
+                    <a href="#contact" class="btn btn-dark">Inquire</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery section-space" id="gallery">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow muted">Selected pieces</p>
+                    <h2>Recent works</h2>
+                </div>
+                <div class="gallery-grid">
+                    <figure class="gallery-item large" data-id="0" data-title="Untitled I">
+                        <img src="https://images.unsplash.com/photo-1578321272176-fff91b91843b?auto=format&fit=crop&w=900&q=80" alt="Untitled I">
+                        <figcaption>Untitled I</figcaption>
+                    </figure>
+                    <figure class="gallery-item" data-id="1" data-title="Night Field">
+                        <img src="https://images.unsplash.com/photo-1549887534-f3c9c1b6f5e8?auto=format&fit=crop&w=900&q=80" alt="Night Field">
+                        <figcaption>Night Field</figcaption>
+                    </figure>
+                    <figure class="gallery-item" data-id="2" data-title="Soft Drift">
+                        <img src="https://images.unsplash.com/photo-1561214115-6d2f1b0609fa?auto=format&fit=crop&w=900&q=80" alt="Soft Drift">
+                        <figcaption>Soft Drift</figcaption>
+                    </figure>
+                    <figure class="gallery-item" data-id="3" data-title="Quiet Forms">
+                        <img src="https://images.unsplash.com/photo-1578321272176-fff91b91843b?auto=format&fit=crop&w=900&q=80" alt="Quiet Forms">
+                        <figcaption>Quiet Forms</figcaption>
+                    </figure>
+                    <figure class="gallery-item" data-id="4" data-title="Resonance">
+                        <img src="https://images.unsplash.com/photo-1549887534-f3c9c1b6f5e8?auto=format&fit=crop&w=900&q=80" alt="Resonance">
+                        <figcaption>Resonance</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-overlay"></div>
+            <div class="lightbox-content">
+                <button class="lightbox-close" id="lightbox-close">×</button>
+                <img id="lightbox-image" src="" alt="">
+                <div class="lightbox-info">
+                    <p id="lightbox-caption"></p>
+                    <div class="lightbox-nav">
+                        <button id="lightbox-prev">← Previous</button>
+                        <button id="lightbox-next">Next →</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
 
-      <section class="gallery section-space" id="gallery">
-        <div class="container">
-          <div class="section-heading">
-            <p class="eyebrow muted">Selected pieces</p>
-            <h2>Recent works</h2>
-          </div>
+        <section class="about section-space" id="about">
+            <div class="container about-grid">
+                <div class="about-copy">
+                    <p class="eyebrow muted">Artist statement</p>
+                    <h2>Making from instinct, rhythm, and memory.</h2>
+                    <p>
+                        I build work through gesture, texture, and restraint. My paintings begin with feeling and then become structure.
+                    </p>
+                    <p>
+                        I'm interested in what remains after the first impulse fades — what is left in the material, in the silence, in the marks that keep their own logic.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-          <div class="gallery-grid">
-            <figure class="gallery-item large" data-title="Untitled I">
-              <img
-                src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=900&q=80"
-                alt="Untitled I"
-              />
-              <figcaption>Untitled I</figcaption>
-            </figure>
+        <section class="poetry section-space" id="poetry">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow muted">Writing</p>
+                    <h2>Poetry</h2>
+                </div>
+                <div class="poem-grid">
+                    <article class="poem">
+                        <p>
+                            In the space between thought and color,<br>
+                            where language fails,<br>
+                            the image arrives.
+                        </p>
+                    </article>
+                    <article class="poem">
+                        <p>
+                            Shadow is not absence.<br>
+                            It is a way of listening.<br>
+                            I paint what the silence keeps.
+                        </p>
+                    </article>
+                    <article class="poem">
+                        <p>
+                            What is made by hand<br>
+                            is never only form.<br>
+                            It is a weather of feeling.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-            <figure class="gallery-item" data-title="Night Field">
-              <img
-                src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=900&q=80"
-                alt="Night Field"
-              />
-              <figcaption>Night Field</figcaption>
-            </figure>
-
-            <figure class="gallery-item" data-title="Soft Drift">
-              <img
-                src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80"
-                alt="Soft Drift"
-              />
-              <figcaption>Soft Drift</figcaption>
-            </figure>
-
-            <figure class="gallery-item" data-title="Quiet Forms">
-              <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
-                alt="Quiet Forms"
-              />
-              <figcaption>Quiet Forms</figcaption>
-            </figure>
-
-            <figure class="gallery-item" data-title="Resonance">
-              <img
-                src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?auto=format&fit=crop&w=900&q=80"
-                alt="Resonance"
-              />
-              <figcaption>Resonance</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="about section-space">
-        <div class="container about-grid">
-          <div class="about-copy">
-            <p class="eyebrow muted">Artist statement</p>
-            <h2>Making from instinct, rhythm, and memory.</h2>
-            <p>
-              I build work through gesture, texture, and restraint. My paintings
-              begin with feeling and then become structure.
-            </p>
-            <p>
-              I’m interested in what remains after the first impulse fades — what
-              is left in the material, in the silence, in the marks that keep
-              their own logic.
-            </p>
-          </div>
-
-          <div class="about-visual">
-            <img
-              src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80"
-              alt="Artist studio"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="contact section-space">
-        <div class="container contact-wrap">
-          <div class="contact-copy">
-            <p class="eyebrow muted">Contact</p>
-            <h2>For commissions, originals, or collaborations.</h2>
-          </div>
-
-          <form class="contact-form" id="contactForm">
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" placeholder="Your name" required />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" placeholder="Your email" required />
-            </label>
-            <label>
-              <span>Message</span>
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Tell me about your inquiry"
-                required
-              ></textarea>
-            </label>
-            <button type="submit" class="btn btn-dark">Send</button>
-          </form>
-        </div>
-      </section>
+        <section class="contact section-space" id="contact">
+            <div class="container contact-wrap">
+                <div class="contact-copy">
+                    <p class="eyebrow muted">Contact</p>
+                    <h2>For commissions, originals, or collaborations.</h2>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <label>
+                        <span>Name</span>
+                        <input type="text" name="name" required>
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" name="email" required>
+                    </label>
+                    <label>
+                        <span>Message</span>
+                        <textarea name="message" rows="5" required></textarea>
+                    </label>
+                    <button type="submit" class="btn btn-dark">Send</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container footer-wrap">
-        <span>jazvrt</span>
-        <span>© 2024</span>
-      </div>
+        <div class="container footer-wrap">
+            <span>jazvrt</span>
+            <span>© 2024</span>
+        </div>
     </footer>
 
-    <div class="lightbox" id="lightbox" aria-hidden="true">
-      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-      <div class="lightbox-container">
-        <button class="lightbox-close" id="lightboxClose" aria-label="Close image">
-          ×
-        </button>
-        <img id="lightboxImage" src="" alt="Selected artwork" />
-        <div class="lightbox-info">
-          <p id="lightboxCaption">Artwork</p>
-          <div class="lightbox-controls">
-            <button id="lightboxPrev" type="button">Previous</button>
-            <button id="lightboxNext" type="button">Next</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script src="script.js"></script>
-  </body>
+</body>
 </html>

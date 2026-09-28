@@ -1,126 +1,88 @@
-const menuToggle = document.querySelector(".menu-toggle");
-const mainNav = document.querySelector(".main-nav");
+// Mobile menu
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.querySelector('.main-nav');
 
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener("click", function () {
-    const isOpen = mainNav.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  document.querySelectorAll(".main-nav a").forEach((link) => {
-    link.addEventListener("click", function () {
-      mainNav.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    });
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('active');
   });
 }
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxCaption = document.getElementById("lightboxCaption");
-const lightboxClose = document.getElementById("lightboxClose");
-const lightboxBackdrop = document.getElementById("lightboxBackdrop");
-const lightboxPrev = document.getElementById("lightboxPrev");
-const lightboxNext = document.getElementById("lightboxNext");
+// Gallery and Lightbox
+const galleryItems = document.querySelectorAll('.gallery-item');
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.getElementById('lightbox-image');
+const lightboxCaption = document.getElementById('lightbox-caption');
+const lightboxClose = document.getElementById('lightbox-close');
+const lightboxPrev = document.getElementById('lightbox-prev');
+const lightboxNext = document.getElementById('lightbox-next');
+const lightboxOverlay = document.querySelector('.lightbox-overlay');
 
-let allImages = [];
-const galleryItems = document.querySelectorAll(".gallery-item");
+let currentImageIndex = 0;
+let images = [];
 
-if (galleryItems.length) {
-  galleryItems.forEach((item) => {
-    const img = item.querySelector("img");
-    const title = item.dataset.title || "Artwork";
-
-    if (img) {
-      allImages.push({
-        src: img.src,
-        title: title,
-      });
-    }
+// Collect all images
+galleryItems.forEach((item, index) => {
+  const img = item.querySelector('img');
+  const title = item.dataset.title || 'Artwork';
+  images.push({
+    src: img.src,
+    title: title
   });
 
-  galleryItems.forEach((item, index) => {
-    item.addEventListener("click", function () {
-      openLightbox(index);
-    });
+  // Add click to open lightbox
+  item.addEventListener('click', () => {
+    currentImageIndex = index;
+    openLightbox();
   });
-}
+});
 
-let currentIndex = 0;
-
-function openLightbox(index) {
-  currentIndex = index;
-  updateLightboxImage();
-  lightbox.classList.add("is-visible");
-  lightbox.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+function openLightbox() {
+  const image = images[currentImageIndex];
+  lightboxImage.src = image.src;
+  lightboxCaption.textContent = image.title;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
-  lightbox.classList.remove("is-visible");
-  lightbox.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "auto";
+  lightbox.classList.remove('active');
+  document.body.style.overflow = 'auto';
 }
 
-function updateLightboxImage() {
-  if (!allImages.length) return;
-  const item = allImages[currentIndex];
-  if (item) {
-    lightboxImage.src = item.src;
-    lightboxCaption.textContent = item.title;
-  }
+function nextImage() {
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+  openLightbox();
 }
 
-if (lightboxClose) {
-  lightboxClose.addEventListener("click", closeLightbox);
+function prevImage() {
+  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+  openLightbox();
 }
 
-if (lightboxBackdrop) {
-  lightboxBackdrop.addEventListener("click", closeLightbox);
-}
+// Lightbox controls
+if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+if (lightboxNext) lightboxNext.addEventListener('click', nextImage);
+if (lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
 
-if (lightboxPrev) {
-  lightboxPrev.addEventListener("click", function () {
-    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
-    updateLightboxImage();
-  });
-}
-
-if (lightboxNext) {
-  lightboxNext.addEventListener("click", function () {
-    currentIndex = (currentIndex + 1) % allImages.length;
-    updateLightboxImage();
-  });
-}
-
-document.addEventListener("keydown", function (event) {
-  if (!lightbox || !lightbox.classList.contains("is-visible")) return;
-
-  if (event.key === "Escape") {
-    closeLightbox();
-  }
-
-  if (event.key === "ArrowLeft") {
-    lightboxPrev.click();
-  }
-
-  if (event.key === "ArrowRight") {
-    lightboxNext.click();
-  }
+// Keyboard controls
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowRight') nextImage();
+  if (e.key === 'ArrowLeft') prevImage();
 });
 
-const contactForm = document.getElementById("contactForm");
-
+// Contact form
+const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-  contactForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const button = contactForm.querySelector(".btn");
-    if (!button) return;
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const button = contactForm.querySelector('.btn');
     const originalText = button.textContent;
-
-    button.textContent = "Message sent!";
+    button.textContent = 'Sent ✓';
     button.disabled = true;
-
     setTimeout(() => {
       button.textContent = originalText;
       button.disabled = false;
